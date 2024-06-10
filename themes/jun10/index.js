@@ -151,6 +151,7 @@ const LayoutIndex = props => {
  * @returns
  */
 const LayoutPostList = props => {
+  console.log('===cat', props)
   return (
     <div id='post-outer-wrapper' className='px-5  md:px-0'>
       {/* 文章分类条 */}

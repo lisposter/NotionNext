@@ -1,8 +1,9 @@
-import { ChevronDoubleLeft, ChevronDoubleRight } from '@/components/HeroIcons'
-import { useGlobal } from '@/lib/global'
+// import { ChevronDoubleLeft, ChevronDoubleRight } from '@/components/HeroIcons'
+// import { useGlobal } from '@/lib/global'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
+import CONFIG from '../config'
 
 /**
  * 博客列表上方嵌入条
@@ -11,23 +12,27 @@ import { useRef, useState } from 'react'
  */
 export default function CategoryBar(props) {
   const { categoryOptions, border = true } = props
-  const { locale } = useGlobal()
-  const [scrollRight, setScrollRight] = useState(false)
+
+  // 优先读取分类配置
+  const categories = CONFIG.HEO_CATEGORIES_OPTIONS || categoryOptions;
+
+  // const { locale } = useGlobal()
+  // const [scrollRight, setScrollRight] = useState(false)
   // 创建一个ref引用
   const categoryBarItemsRef = useRef(null)
 
   // 点击#right时，滚动#category-bar-items到最右边
-  const handleToggleScroll = () => {
-    if (categoryBarItemsRef.current) {
-      const { scrollWidth, clientWidth } = categoryBarItemsRef.current
-      if (scrollRight) {
-        categoryBarItemsRef.current.scrollLeft = 0
-      } else {
-        categoryBarItemsRef.current.scrollLeft = scrollWidth - clientWidth
-      }
-      setScrollRight(!scrollRight)
-    }
-  }
+  // const handleToggleScroll = () => {
+  //   if (categoryBarItemsRef.current) {
+  //     const { scrollWidth, clientWidth } = categoryBarItemsRef.current
+  //     if (scrollRight) {
+  //       categoryBarItemsRef.current.scrollLeft = 0
+  //     } else {
+  //       categoryBarItemsRef.current.scrollLeft = scrollWidth - clientWidth
+  //     }
+  //     setScrollRight(!scrollRight)
+  //   }
+  // }
 
   return (
     <div
@@ -38,13 +43,13 @@ export default function CategoryBar(props) {
         id='category-bar-items'
         ref={categoryBarItemsRef}
         className='scroll-smooth max-w-4xl rounded-lg scroll-hidden flex justify-start flex-nowrap items-center overflow-x-scroll'>
-        <MenuItem href='/' name={locale.NAV.INDEX} />
-        {categoryOptions?.map((c, index) => (
-          <MenuItem key={index} href={`/category/${c.name}`} name={c.name} />
+        {/* <MenuItem href='/' name={locale.NAV.INDEX} /> */}
+        {categories?.map((c, index) => (
+          <MenuItem key={index} href={`/category/${c.url || c.name}`} name={c.name} />
         ))}
       </div>
 
-      <div id='category-bar-next' className='flex items-center justify-center'>
+      {/* <div id='category-bar-next' className='flex items-center justify-center'>
         <div
           id='right'
           className='cursor-pointer mx-2 dark:text-gray-300 dark:hover:text-yellow-600 hover:text-indigo-600'
@@ -60,7 +65,7 @@ export default function CategoryBar(props) {
           className='whitespace-nowrap font-bold text-gray-900 dark:text-white transition-colors duration-200 hover:text-indigo-600 dark:hover:text-yellow-600'>
           {locale.MENU.CATEGORY}
         </Link>
-      </div>
+      </div> */}
     </div>
   )
 }

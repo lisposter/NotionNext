@@ -80,6 +80,21 @@ const CONFIG = {
   HEO_WIDGET_TO_TOP: true,
   HEO_WIDGET_TO_COMMENT: true, // 跳到评论区
   HEO_WIDGET_DARK_MODE: true, // 夜间模式
-  HEO_WIDGET_TOC: true // 移动端悬浮目录
+  HEO_WIDGET_TOC: true, // 移动端悬浮目录
+
+  HEO_CATEGORIES_OPTIONS: [
+    {
+      name: '投资理财',
+      url: 'finance',
+    },
+    {
+      name: '独立开发',
+      url: 'tech',
+    },
+    {
+      name: '数字游民',
+      url: 'nomad',
+    }
+  ]
 }
 export default CONFIG

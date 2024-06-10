@@ -65,6 +65,9 @@ const ExternalPlugin = props => {
   const ANIMATE_CSS_URL = siteConfig('ANIMATE_CSS_URL')
   const MOUSE_FOLLOW = siteConfig('MOUSE_FOLLOW')
 
+  const UMAMI_SERVER_URL = siteConfig('UMAMI_SERVER_URL')
+  const UMAMI_WEBSITE_ID = siteConfig('UMAMI_WEBSITE_ID')
+
   // 自定义样式css和js引入
   if (isBrowser) {
     // 初始化AOS动画
@@ -332,6 +335,15 @@ const ExternalPlugin = props => {
           }}
         />
       )}
+
+      {UMAMI_SERVER_URL && UMAMI_WEBSITE_ID && (
+        <script
+          async
+          data-website-id={UMAMI_WEBSITE_ID}
+          src={UMAMI_SERVER_URL}
+        />
+      )}
+
     </>
   )
 }

@@ -27,8 +27,7 @@ export async function getStaticProps({ params: { category }, locale }) {
   props.posts = props.allPages?.filter(
     page => page.type === 'Post' && page.status === 'Published'
   )
-
-  console.log('category', category, props.posts)
+  
   // 处理过滤
   // props.posts = props.posts.filter(
   //   post => post && post.category && post.category.includes(category)
