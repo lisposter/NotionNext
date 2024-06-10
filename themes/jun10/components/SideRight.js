@@ -1,25 +1,25 @@
-import Live2D from '@/components/Live2D'
-import dynamic from 'next/dynamic'
+// import Live2D from '@/components/Live2D'
+// import dynamic from 'next/dynamic'
 import { AnalyticsCard } from './AnalyticsCard'
 import Card from './Card'
 import Catalog from './Catalog'
-import { InfoCard } from './InfoCard'
+// import { InfoCard } from './InfoCard'
 import LatestPostsGroupMini from './LatestPostsGroupMini'
 import TagGroups from './TagGroups'
 import TouchMeCard from './TouchMeCard'
 
-const FaceBookPage = dynamic(
-  () => {
-    let facebook = <></>
-    try {
-      facebook = import('@/components/FacebookPage')
-    } catch (err) {
-      console.error(err)
-    }
-    return facebook
-  },
-  { ssr: false }
-)
+// const FaceBookPage = dynamic(
+//   () => {
+//     let facebook = <></>
+//     try {
+//       facebook = import('@/components/FacebookPage')
+//     } catch (err) {
+//       console.error(err)
+//     }
+//     return facebook
+//   },
+//   { ssr: false }
+// )
 
 /**
  * Hexo主题右侧栏
@@ -34,7 +34,7 @@ export default function SideRight(props) {
 
   return (
     <div id='sideRight' className='hidden xl:block w-72 space-y-4 h-full'>
-      <InfoCard {...props} className='w-72' />
+      {/* <InfoCard {...props} className='w-72' /> */}
 
       <div className='sticky top-20 space-y-4'>
         {/* 文章页显示目录 */}
@@ -56,9 +56,9 @@ export default function SideRight(props) {
         </div>
 
         {rightAreaSlot}
-
+{/* 
         <FaceBookPage />
-        <Live2D />
+        <Live2D /> */}
 
         {/* 标签和成绩 */}
         <Card
@@ -67,7 +67,7 @@ export default function SideRight(props) {
           }>
           <TagGroups tags={sortedTags} currentTag={currentTag} />
           <hr className='mx-1 flex border-dashed relative my-4' />
-          <AnalyticsCard {...props} />
+          {/* <AnalyticsCard {...props} /> */}
         </Card>
       </div>
     </div>
