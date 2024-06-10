@@ -18,7 +18,7 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
   }
   // 文章头图
   const headerImage = post?.pageCover ? post.pageCover : siteInfo?.pageCover
-  const ANALYTICS_BUSUANZI_ENABLE = siteConfig('ANALYTICS_BUSUANZI_ENABLE')
+  // const ANALYTICS_BUSUANZI_ENABLE = siteConfig('ANALYTICS_BUSUANZI_ENABLE')
   return (
     <div
       id='post-bg'
@@ -119,19 +119,19 @@ export default function PostHeader({ post, siteInfo, isDarkMode }) {
                 </>
               )}
 
-              <div className='pl-1 mr-2'>
+              {/* <div className='pl-1 mr-2'>
                 <i className='fa-regular fa-calendar-check'></i>{' '}
                 {post.lastEditedDay}
-              </div>
+              </div> */}
             </div>
 
             {/* 阅读统计 */}
-            {ANALYTICS_BUSUANZI_ENABLE && (
+            {/* {ANALYTICS_BUSUANZI_ENABLE && (
               <div className='busuanzi_container_page_pv font-light mr-2'>
                 <i className='fa-solid fa-fire-flame-curved'></i>{' '}
                 <span className='mr-2 busuanzi_value_page_pv' />
               </div>
-            )}
+            )} */}
           </section>
         </div>
 

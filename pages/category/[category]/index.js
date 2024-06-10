@@ -27,10 +27,17 @@ export async function getStaticProps({ params: { category }, locale }) {
   props.posts = props.allPages?.filter(
     page => page.type === 'Post' && page.status === 'Published'
   )
+
+  console.log('category', category, props.posts)
   // 处理过滤
-  props.posts = props.posts.filter(
-    post => post && post.category && post.category.includes(category)
-  )
+  // props.posts = props.posts.filter(
+  //   post => post && post.category && post.category.includes(category)
+  // )
+  props.posts = props.posts.filter(post => {
+    const categories = typeof post.category === 'string' ? [post.category] : post.category
+    return categories.map(cat => cat.toLowerCase()).includes(category.toLowerCase())
+  })
+
   // 处理文章页数
   props.postCount = props.posts.length
   // 处理分页

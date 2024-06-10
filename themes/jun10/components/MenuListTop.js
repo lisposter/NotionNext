@@ -17,16 +17,23 @@ export const MenuListTop = props => {
     },
     {
       id: 2,
-      icon: 'fas fa-search',
-      name: locale.NAV.SEARCH,
-      href: '/search',
+      icon: 'fas fa-dollar-sign',
+      name: '投资理财',
+      href: '/category/finance',
       show: siteConfig('HEO_MENU_SEARCH', null, CONFIG)
     },
     {
       id: 3,
-      icon: 'fas fa-archive',
-      name: locale.NAV.ARCHIVE,
-      href: '/archive',
+      icon: 'fas fa-code',
+      name: '独立开发',
+      href: '/category/finance',
+      show: siteConfig('HEO_MENU_ARCHIVE', null, CONFIG)
+    },
+    {
+      id: 4,
+      icon: 'fas fa-mug-hot',
+      name: '数字游民',
+      href: '/category/nomad',
       show: siteConfig('HEO_MENU_ARCHIVE', null, CONFIG)
     }
   ]

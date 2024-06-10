@@ -1,7 +1,28 @@
+import Link from 'next/link'
 import { siteConfig } from '@/lib/config'
-import SocialButton from './SocialButton'
+// import SocialButton from './SocialButton'
 
 const Footer = ({ title }) => {
+  const LINKS = [
+    {
+      name: '关于',
+      href: '/about'
+    },
+    {
+      name: '友链',
+      href: '/links'
+    },
+    {
+      name: '赞助',
+      // icon: <HeartIcon className="w-5 h-5 inline-block mb-1 group-hover:text-red-500" />,
+      href: '/sponsors'
+    },
+    {
+      name: '免责',
+      href: '/disclaimer'
+    }
+  ]
+
   const d = new Date()
   const currentYear = d.getFullYear()
   const since = siteConfig('SINCE')
@@ -9,57 +30,38 @@ const Footer = ({ title }) => {
     parseInt(since) < currentYear ? since + '-' + currentYear : currentYear
 
   return (
-    <footer className='relative flex-shrink-0 bg-white dark:bg-[#1a191d] justify-center text-center m-auto w-full leading-6  text-gray-600 dark:text-gray-100 text-sm'>
-      {/* 颜色过度区 */}
-      <div
-        id='color-transition'
-        className='h-32 bg-gradient-to-b from-[#f7f9fe] to-white  dark:bg-[#1a191d] dark:from-inherit dark:to-inherit'
-      />
-
-      {/* 社交按钮 */}
-      <div className='w-full h-24'>
-        <SocialButton />
-      </div>
-
-      <br />
-
-      {/* 底部页面信息 */}
-      <div
-        id='footer-bottom'
-        className='w-full h-20 flex flex-col p-3 lg:flex-row justify-between px-6 items-center bg-[#f1f3f7] dark:bg-[#21232A] border-t dark:border-t-[#3D3D3F]'>
-        <div id='footer-bottom-left'>
-          NotionNext {siteConfig('VERSION')} <i className='fas fa-copyright' />{' '}
-          {`${copyrightDate}`} <i className='mx-1 animate-pulse fas fa-heart' />{' '}
-          <a
-            href={siteConfig('LINK')}
-            className='underline font-bold dark:text-gray-300 '>
-            {siteConfig('AUTHOR')}
-          </a>
-          .
+    <footer className='mt-8 relative flex-shrink-0 bg-gray-100 dark:bg-[#1a191d] justify-center text-center m-auto w-full leading-6  text-gray-600 dark:text-gray-100 text-sm'>
+        <div>
+          <ul className="flex flex-row justify-center items-center my-4">
+            {LINKS.map((item) => (
+              <li key={item.name} className="mx-4 group">
+                <Link
+                  href={item.href}
+                  className="hover:text-gray-600 dark:hover:text-gray-300"
+                >
+                  {item.icon && item.icon}
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div id='footer-bottom-right'>
-          {siteConfig('BEI_AN') && (
-            <>
-              <i className='fas fa-shield-alt' />{' '}
-              <a href='https://beian.miit.gov.cn/' className='mr-2'>
-                {siteConfig('BEI_AN')}
+        <div className="my-4 leading-6 text-xs">
+          <div className="flex align-baseline justify-center flex-wrap">
+            <p className="mr-4">
+              &copy; {siteConfig.author} {copyrightDate}
+            </p>
+            <p>
+              本站原创内容基于
+              <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank"
+                rel="license noopener noreferrer" className="hover:underline" >
+                CC BY-NC-ND 4.0
               </a>
-            </>
-          )}
-
-          <span className='hidden busuanzi_container_site_pv'>
-            <i className='fas fa-eye' />
-            <span className='px-1 busuanzi_value_site_pv'> </span>{' '}
-          </span>
-          <span className='pl-2 hidden busuanzi_container_site_uv'>
-            <i className='fas fa-users' />{' '}
-            <span className='px-1 busuanzi_value_site_uv'> </span>{' '}
-          </span>
-
-          {/* <h1 className='text-xs pt-4 text-light-400 dark:text-gray-400'>{title} {siteConfig('BIO') && <>|</>} {siteConfig('BIO')}</h1> */}
+              共享
+            </p>
+          </div>
         </div>
-      </div>
     </footer>
   )
 }

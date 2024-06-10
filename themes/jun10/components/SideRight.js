@@ -1,6 +1,6 @@
 // import Live2D from '@/components/Live2D'
 // import dynamic from 'next/dynamic'
-import { AnalyticsCard } from './AnalyticsCard'
+// import { AnalyticsCard } from './AnalyticsCard'
 import Card from './Card'
 import Catalog from './Catalog'
 // import { InfoCard } from './InfoCard'
