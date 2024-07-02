@@ -558,20 +558,27 @@ summary > .notion-h {
 }
 
 .notion-link {
-  color: inherit;
-  word-break: break-word;
-  text-decoration: inherit;
-  border-bottom: 0.05em solid !important;
-  border-color: var(--fg-color-2);
-  opacity: 0.7;
-  transition:
-    border-color 100ms ease-in,
-    opacity 100ms ease-in;
+  @apply p-1;
+  @apply bg-gradient-to-b from-gray-300 to-gray-300;
+  @apply bg-no-repeat bg-contain;
+  /* @apply font-bold; */
+  padding-block-end: 0.05em;
+  background-position: 0 1.3em;
+  color: #05a882;
+  text-decoration: none;
+  border-bottom: none;
+  opacity: 1;
+  transition: color .2s,background-position .2s;
+}
+
+.notion-link:hover span {
+  background: none!important;
 }
 
 .notion-link:hover {
-  border-color: var(--fg-color-6);
-  opacity: 1;
+  background-image: linear-gradient(to bottom,#05a882 0%,#05a882 100%);
+  background-position: 0 0;
+  color: #fff;
 }
 
 .notion-blank {
