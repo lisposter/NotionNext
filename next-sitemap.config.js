@@ -7,8 +7,11 @@ module.exports = {
   siteUrl: BLOG.LINK,
   changefreq: 'daily',
   priority: 0.7,
-  generateRobotsTxt: true,
-  sitemapSize: 7000
+  generateRobotsTxt: false,
+  sitemapSize: 7000,
+  robotsTxtOptions: {
+    policies: [{ userAgent: '*', allow: '/', disallow: ['/page/', '/tag/'] }]
+  }
   // ...other options
   // https://github.com/iamvishnusankar/next-sitemap#configuration-options
 }

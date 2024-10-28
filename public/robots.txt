@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /page/
+Disallow: /tag/
+
+# Host
+Host: https://innomad.io
+  
+# Sitemaps
+Sitemap: https://innomad.io/sitemap.xml
+  
+    
