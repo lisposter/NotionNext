@@ -102,7 +102,13 @@ const GlobalHead = props => {
         name='viewport'
         content='width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0'
       />
-      <meta name='robots' content='follow, index' />
+
+      { props.category || props.tag ? (
+        <meta name='robots' content='noindex, follow' />
+      ) : (
+        <meta name='robots' content='follow, index' />
+      ) }
+
       <meta charSet='UTF-8' />
       {SEO_GOOGLE_SITE_VERIFICATION && (
         <meta
