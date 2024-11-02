@@ -26,7 +26,7 @@ export const MenuListTop = props => {
       id: 3,
       icon: 'fas fa-code',
       name: '独立开发',
-      href: '/category/finance',
+      href: '/category/tech',
       show: siteConfig('HEO_MENU_ARCHIVE', null, CONFIG)
     },
     {
